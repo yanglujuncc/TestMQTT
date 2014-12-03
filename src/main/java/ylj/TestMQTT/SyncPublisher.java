@@ -31,7 +31,7 @@ class SyncPublisher {
 
 		String user = env("APOLLO_USER", "admin");
 		String password = env("APOLLO_PASSWORD", "password");
-		String host = env("APOLLO_HOST", "ssl://localhost");
+		String host = env("APOLLO_HOST", "localhost");
 		int port = Integer.parseInt(env("APOLLO_PORT", "61613"));
 		final String destination = arg(args, 0, "/topic/event");
 
