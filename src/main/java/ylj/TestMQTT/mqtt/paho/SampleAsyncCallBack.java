@@ -211,6 +211,8 @@ public class SampleAsyncCallBack implements MqttCallback {
 			} else if (action.equals("subscribe")) {
 				sampleClient.subscribe(topic, qos);
 			}
+			
+			
 		} catch (MqttException me) {
 			// Display full details of any exception that occurs
 			System.out.println("reason " + me.getReasonCode());
@@ -642,7 +644,8 @@ public class SampleAsyncCallBack implements MqttCallback {
 			};
 
 			try {
-				client.subscribe(topicName, qos, "Subscribe sample context", subListener);
+				//IMqttToken  iMqttToken =client.subscribe(topicName, qos, "Subscribe sample context", subListener);
+				//iMqttToken.getUserContext()
 			} catch (MqttException e) {
 				state = ERROR;
 				donext = true;
