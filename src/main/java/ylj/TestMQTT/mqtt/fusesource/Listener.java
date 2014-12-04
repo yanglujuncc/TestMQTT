@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ylj.TestMQTT;
+package ylj.TestMQTT.mqtt.fusesource;
 
 import org.fusesource.hawtbuf.*;
 import org.fusesource.mqtt.client.*;

@@ -1,4 +1,4 @@
-package ylj.TestMQTT.paho;
+package ylj.TestMQTT.mqtt.paho;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;

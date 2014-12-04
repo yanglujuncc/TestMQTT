@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ylj.TestMQTT;
+package ylj.TestMQTT.mqtt.fusesource;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +25,7 @@ import org.fusesource.mqtt.client.*;
  * Uses an callback based interface to MQTT. Callback based interfaces are
  * harder to use but are slightly more efficient.
  */
-class SyncSubscriber {
+class SyncWillSubscriber {
 
 	public static void main(String[] args) throws Exception {
 
@@ -41,26 +41,29 @@ class SyncSubscriber {
 		mqtt.setPassword(password);
 
 		mqtt.setCleanSession(true);
-	//	mqtt.setClientId("1234567890");
+		//mqtt.setClientId("123456789");
 		mqtt.setKeepAlive((short) 10);
 
-		mqtt.setWillTopic("/topic/will");
-		mqtt.setWillQos( QoS.AT_MOST_ONCE);
-		mqtt.setWillMessage("hell i am will message,SyncSubscriber");
-		mqtt.setWillRetain(false);
 		
+	
 		
-		Topic[] topics = { new Topic(destination, QoS.AT_LEAST_ONCE) };
+		//mqtt.setWillTopic("/topic/event/will");
+	///	mqtt.setWillMessage("hell i am will message");
+
+		Topic[] topics = { new Topic("/topic/will", QoS.AT_LEAST_ONCE) };
 
 		BlockingConnection connection = mqtt.blockingConnection();
 
 		connection.connect();
-		byte[] dates=connection.subscribe(topics);
-
+		connection.subscribe(topics);
+		
+	
 		while (true) {
-			System.out.println("waiting  msg... ");
+			
+			System.out.println("waiting will msg... ");
 			Message msg = connection.receive();
-			if (msg != null) {			
+			
+			if (msg != null) {
 				byte[] data = msg.getPayload();			
 				System.out.println("receive msg:" + new String(data,"utf-8"));
 				msg.ack();  
