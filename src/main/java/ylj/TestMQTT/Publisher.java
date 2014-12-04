@@ -39,6 +39,8 @@ class Publisher {
         int port = Integer.parseInt(env("APOLLO_PORT", "61613"));
         final String destination = arg(args, 0, "/topic/event");
 
+        
+        
         int messages = 10000;
         int size = 256;
 
